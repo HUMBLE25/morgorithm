@@ -15,7 +15,9 @@ function solution(box, n) {
    
     //소수점을 제거하여 올바른 최대 갯수를 구한다.
     //그리고 모두 곱한다.
-    return Math.trunc(box[0]/n) * Math.trunc(box[1]/n)*Math.trunc(box[2]/n)
+    // return Math.trunc(box[0]/n) * Math.trunc(box[1]/n)*Math.trunc(box[2]/n)
     
+     const result =box.reduce((acc,cur) => acc * Math.trunc(cur / n), 1);
+     return result
 
 }
