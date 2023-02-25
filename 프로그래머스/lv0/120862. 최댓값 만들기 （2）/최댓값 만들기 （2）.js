@@ -6,9 +6,15 @@ function solution(numbers) {
     //두가지 경우를 비교하면 되지 않을까?
     
     numbers.sort((a,b)=>b-a)
-    if(numbers[0]*numbers[1] > numbers[numbers.length-1]*numbers[numbers.length-2]){
-        return numbers[0]*numbers[1]
-    }else{
-        return numbers[numbers.length-1]*numbers[numbers.length-2]
-    }
+    // if(numbers[0]*numbers[1] > numbers[numbers.length-1]*numbers[numbers.length-2]){
+    //     return numbers[0]*numbers[1]
+    // }else{
+    //     return numbers[numbers.length-1]*numbers[numbers.length-2]
+    // }
+    
+    //=> 리팩토링 if~else문을 삼항연산자로 리팩토링 하자.
+    // Conditional (ternary) operator(조건(삼항)연산자)
+    return numbers[0]*numbers[1] > numbers[numbers.length-1]*numbers[numbers.length-2] 
+           ? numbers[0]*numbers[1] 
+           : numbers[numbers.length-1]*numbers[numbers.length-2]
 }
