@@ -14,7 +14,9 @@ function solution(numbers) {
     
     //=> 리팩토링 if~else문을 삼항연산자로 리팩토링 하자.
     // Conditional (ternary) operator(조건(삼항)연산자)
-    return numbers[0]*numbers[1] > numbers[numbers.length-1]*numbers[numbers.length-2] 
+    // numbers.length를 자주 사용하므로 변수에 담아서 사용하자.
+    const L = numbers.length
+    return numbers[0]*numbers[1] > numbers[L-1]*numbers[L-2] 
            ? numbers[0]*numbers[1] 
-           : numbers[numbers.length-1]*numbers[numbers.length-2]
+           : numbers[L-1]*numbers[L-2]
 }
