@@ -15,8 +15,15 @@ function solution(numbers) {
     //=> 리팩토링 if~else문을 삼항연산자로 리팩토링 하자.
     // Conditional (ternary) operator(조건(삼항)연산자)
     // numbers.length를 자주 사용하므로 변수에 담아서 사용하자.
+    // const L = numbers.length
+    // return numbers[0]*numbers[1] > numbers[L-1]*numbers[L-2] 
+    //        ? numbers[0]*numbers[1] 
+    //        : numbers[L-1]*numbers[L-2]
+    
+    //두수중에서 큰수를 골라내는것이니 Math.max()매소드를 사용할수 있다.
     const L = numbers.length
-    return numbers[0]*numbers[1] > numbers[L-1]*numbers[L-2] 
-           ? numbers[0]*numbers[1] 
-           : numbers[L-1]*numbers[L-2]
+    return Math.max(numbers[0]*numbers[1],numbers[L-1]*numbers[L-2])
+
+    
+    
 }
