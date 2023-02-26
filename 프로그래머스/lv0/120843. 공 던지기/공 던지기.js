@@ -9,9 +9,18 @@ function solution(numbers, k) {
     
     // 0번째 인덱스에서 시작하여 1회마다 인덱스가 2씩 증가하는 상황과 같다.
     // 2씩 증가하기에 k가 numbers의 길이의 절반보다 크게되면 다시 0번째 인덱스로 돌아가야한다.
-    // 2*k를 배열의 길이 만
-    // 마지막에 공을 던진 사람을 구해야한다는것이다.
+    // 마지막에 공을 던진 사람을 구해야하므로 k만큼 연산하는것이 아니라 k-1만큼 연산한다.
+    // 마지막에 던진사람의 번호를 알수 있다.
+    // 나머지연산자%를 사용하여 2*(k-1)을 입력받은 배열의 길이만큼 나누었을때,
+    // 나머지가 마지막으로 던진사람의 인덱스가 된다. 
+    // 연산을 하고 그 값을 인덱스로 접근하여 입력받은 배열의 요소를 반환한다. 
     
-    console.log(numbers[2*(k-1)%numbers.length])
-    return numbers[2*(k-1)%numbers.length]
+    // return numbers[2*(k-1)%numbers.length];
+    //가독성을 위해 변수에 담았다.
+    // const last = 2*(k-1)%numbers.length;
+    // return numbers[last];
+    
+    //k-1 대신 --k를 사용하였다.
+    const last = 2*(--k)%numbers.length;
+    return numbers[last];
 }
