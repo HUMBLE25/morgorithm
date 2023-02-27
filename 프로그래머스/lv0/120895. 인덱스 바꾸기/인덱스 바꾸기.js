@@ -9,20 +9,30 @@ function solution(my_string, num1, num2) {
     //요소는 바꾸지 않지만 인덱스만 바꾼다는것이다.
     //객체에 담아서 이들의 인덱스를 바꾸어 주면 되는것인가?
  
-    //입력받은 배열의 인덱스를 key로 하고 요소를 value로 하는 객체를 만든다.
-    let obj ={};
-    for(let id in my_string){
-        obj[id] = my_string[id]
-    };
+//     //입력받은 배열의 인덱스를 key로 하고 요소를 value로 하는 객체를 만든다.
+//     let obj ={};
+//     for(let id in my_string){
+//         obj[id] = my_string[id]
+//     };
     
-    //num1,num2의 value에 각각 서로의 요소를 재할당해준다.
-    obj[num1]=my_string[num2];
-    obj[num2]=my_string[num1];
+//     //num1,num2의 value에 각각 서로의 요소를 재할당해준다.
+//     obj[num1]=my_string[num2];
+//     obj[num2]=my_string[num1];
     
-    //더하기할당 연산자로 객체의 value들을 문자열로 묶어준다.
-    let answer =''
-    for(let id in obj){
-        answer+=obj[id]
-    }
-    return answer
+//     //더하기할당 연산자로 객체의 value들을 문자열로 묶어준다.
+//     let answer =''
+//     for(let id in obj){
+//         answer+=obj[id]
+//     }
+//     return answer
+    
+    //구조분해할당을 이용해보자.
+    //구조분해 할당을 이용하면 두변수를 swap할수있다.
+    my_string = my_string.split('');
+    //예
+    //my_string[num1] = '구조분'
+    //my_string[num2] = '해할당'
+    [my_string[num1],my_string[num2]] = [my_string[num2],my_string[num1]];
+    //console.log(my_string[num1],my_string[num2]) //'해할당' '구조분'
+    return my_string.join('');
 }
