@@ -27,24 +27,40 @@ function solution(skill, skill_trees) {
     //선행의 의미는 0번째 인덱스가 꼭있어야한다. 
     //그전의 스킬을 꼭 포함하고 있어야 하며 결국은 0번째 인덱스까지 포함되어야한다.
     
-    let result = 0;
+//     let result = 0;
   
-    for(let i =0; i < skill_trees.length; i++){
-    let str ='';
+//     for(let i =0; i < skill_trees.length; i++){
+//     let str ='';
 
-        for(let j=0; j < skill_trees[i].length; j++){
-            if(skill.includes(skill_trees[i][j])){
-                str += skill_trees[i][j]
-            }  
-        }
-        console.log(str)
-        if(str==='') str = skill;
-        if( skill.includes(str)){
-            if(str[0]===skill[0]){
-                // console.log(str)
-                result ++
-            }
-        }
-    }
-  return result
+//         for(let j=0; j < skill_trees[i].length; j++){
+//             if(skill.includes(skill_trees[i][j])){
+//                 str += skill_trees[i][j]
+//             }  
+//         }
+//         console.log(str)
+//         if(str==='') str = skill;
+//         if( skill.includes(str)){
+//             if(str[0]===skill[0]){
+//                 // console.log(str)
+//                 result ++
+//             }
+//         }
+//     }
+//   return result
+    
+    //정규표현식을 이용할수 있다.
+
+    //정규표현식 객체생성자를 이용해 skill이외의 문자를 찾을수있도록 만든다..
+    const regex = new RegExp(`[^${skill}]`, 'g');
+    return skill_trees
+        .map((el) => {
+        return el.replace(regex, '') // skill에 포함되지 않은 것들을 ''으로 만든다.
+    })
+        .filter((el,id) => {
+            console.log(skill.indexOf(el),el)
+            return skill.indexOf(el) === 0 || el === "";
+        })
+        .length
+    
+
 }
