@@ -48,19 +48,20 @@ function solution(skill, skill_trees) {
 //     }
 //   return result
     
-    //정규표현식을 이용할수 있다.
-
-    //정규표현식 객체생성자를 이용해 skill이외의 문자를 찾을수있도록 만든다..
+    
+    //정규표현식 객체생성자를 이용해 skill이외의 문자를 찾을수있도록 만든다.
     const regex = new RegExp(`[^${skill}]`, 'g');
+    
     return skill_trees
-        .map((el) => {
-        return el.replace(regex, '') // skill에 포함되지 않은 것들을 ''으로 만든다.
-    })
-        .filter((el,id) => {
-            console.log(skill.indexOf(el),el)
+        .map((el) => 
+        el.replace(regex, '') // skill에 포함되지 않은 것들을 ''으로 만든다.
+    ) //스킬트리의 스킬들 만 남게된다.
+        .filter((el,id) => { //0번째 인덱스가 있는경우만 받아온다.
             return skill.indexOf(el) === 0 || el === "";
         })
         .length
+    //filter매소드를 사용했기에 위 조건을 만족하는것만 받아오게 된다. 
+    //이때의 배열의 길이가 올바른 스킬트리가된다.
     
 
 }
