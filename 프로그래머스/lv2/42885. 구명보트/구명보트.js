@@ -13,28 +13,36 @@ function solution(people, limit) {
 
     
    
-    people.sort((a,b)=>b-a)
-    let last =people.length-1;//마지막 인덱스
-    let boat = 0; //사람을 태워 보낸수
-    for(let i = 0; i<people.length;i++){
-        //사람을 태워 보낼때마다 null을 할당하고null이라면 이미 태워보낸것이니 반복문을 중지시킨다.
-        if(people[i]===null) break;
-        //태울수 있는 몸무게이다.
-        let weight = limit-people[i];
-        if(weight >= people[last]){
-            //wight보다 몸무게가 적다면 보트에 태워 보낼수 있다.
-            //보냈닫면 null을 할당한다.
-            people[i]=null;
-            people[last]=null;
-            //last를 1씩 줄여 다음으로 몸무게가 적게 나가는 사람을 검증하게한다.
-            last--;
-            //보트를 태워 보냈으면 1씩 증가시켜준다.
-            boat++;
+//     people.sort((a,b)=>b-a)
+//     let last =people.length-1;//마지막 인덱스
+//     let boat = 0; //사람을 태워 보낸수
+//     for(let i = 0; i<people.length;i++){
+//         //사람을 태워 보낼때마다 null을 할당하고null이라면 이미 태워보낸것이니 반복문을 중지시킨다.
+//         if(people[i]===null) break;
+//         //태울수 있는 몸무게이다.
+//         let weight = limit-people[i];
+//         if(weight >= people[last]){
+//             //wight보다 몸무게가 적다면 보트에 태워 보낼수 있다.
+//             //보냈닫면 null을 할당한다.
+//             people[i]=null;
+//             people[last]=null;
+//             //last를 1씩 줄여 다음으로 몸무게가 적게 나가는 사람을 검증하게한다.
+//             last--;
+//             //보트를 태워 보냈으면 1씩 증가시켜준다.
+//             boat++;
         
-        }else{
-            //위 조건들을 충족하지 않는다면 보트의 수를 증가시켜준다.
-            boat++
-        }
-    }
-    return boat
+//         }else{
+//             //위 조건들을 충족하지 않는다면 보트의 수를 증가시켜준다.
+//             boat++
+//         }
+//     }
+//     return boat
+    
+    people.sort((a, b)=>{return a-b});
+    let num
+    for(let i=0, j=people.length-1; i < j; j--) {
+        if( people[i] + people[j] <= limit ) i++;
+         num=i
+    }    
+    return people.length - num;
 }
