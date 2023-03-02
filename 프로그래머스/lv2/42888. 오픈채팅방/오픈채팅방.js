@@ -9,24 +9,18 @@ function solution(record) {
     // Enter==='님이 들어왔습니다.'
     // Leave==='님이 나갔습니다.'
     //유저의 정보를 담은 객체와 그를 담은 배열을 만들자.
-    //uid:name
     let usersInfo={}
-    let text={
-        "Enter":"님이 들어왔습니다.",
-        "Leave":"님이 나갔습니다.",
-    }
-    // console.log(record)
-    // console.log(el.split(' ')[1],el.split(' ')[2])
     for(let el of record){
-        if(el.split(' ')[2]){
-        usersInfo[el.split(' ')[1]]=el.split(' ')[2]
+        let name = el.split(' ')[2]
+        if(name){
+        usersInfo[el.split(' ')[1]]=name
         }
     }
-    return record.filter(el=>'Change'!==el.split(' ')[0])
-        .map((el,id)=>{
-        if(text[el.split(' ')[0]]){
-        return usersInfo[el.split(' ')[1]]+text[el.split(' ')[0]]    
-        }else{''}
-    })
-    
+    let answer =[]
+    record
+        .forEach((el,id)=>{
+        if(el.split(' ')[0] === 'Enter')answer.push(usersInfo[el.split(' ')[1]]+'님이 들어왔습니다.')
+        if(el.split(' ')[0] === 'Leave')answer.push(usersInfo[el.split(' ')[1]]+'님이 나갔습니다.')
+        })
+    return answer
 }
