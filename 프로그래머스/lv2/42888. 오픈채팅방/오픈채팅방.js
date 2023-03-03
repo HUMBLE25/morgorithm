@@ -9,18 +9,43 @@ function solution(record) {
     // Enter==='님이 들어왔습니다.'
     // Leave==='님이 나갔습니다.'
     //유저의 정보를 담은 객체와 그를 담은 배열을 만들자.
-    let usersInfo={}
-    for(let el of record){
-        let name = el.split(' ')[2]
-        if(name){
-        usersInfo[el.split(' ')[1]]=name
+    
+//     //유저의 정보를 담을 빈객체를 만든다.
+//     let usersInfo={}
+//     //Leave의경우 이름을 가지고 있지 않기에 2번째인덱스에 값이 없다.즉 undefined이다.
+//     //이를 제외한 경우에 1번째 인덱스를 key로 하고 2번째 인덱스를 value로 하는 객체를 만든다.
+//     record.forEach((el)=>{
+//         if(el.split(' ')[2]){usersInfo[el.split(' ')[1]]=el.split(' ')[2]}
+//     })
+
+//     let answer =[]
+//     record
+//         .forEach((el)=>{
+//         //Enter하고,Leave일때만 문자를 덧붙여 배열에 담아준다.
+//         if(el.split(' ')[0] === 'Enter')answer.push(usersInfo[el.split(' ')[1]]+'님이 들어왔습니다.')
+//         if(el.split(' ')[0] === 'Leave')answer.push(usersInfo[el.split(' ')[1]]+'님이 나갔습니다.')
+//         })
+//     return answer
+    
+    const answer =[];
+    const user ={};
+    for( let i = 0; i < record.length;i++){
+        const [action,uid,nickname] =record[i].split(' ')
+
+        if(nickname){
+            user[uid]=nickname;
         }
+        if(action !=='Change'){
+            answer.push({action,uid})
+        }    
+        
     }
-    let answer =[]
-    record
-        .forEach((el,id)=>{
-        if(el.split(' ')[0] === 'Enter')answer.push(usersInfo[el.split(' ')[1]]+'님이 들어왔습니다.')
-        if(el.split(' ')[0] === 'Leave')answer.push(usersInfo[el.split(' ')[1]]+'님이 나갔습니다.')
-        })
+    for(let idx in answer){
+        answer[idx]=user[answer[idx].uid]+(
+        answer[idx].action==="Enter"
+            ?"님이 들어왔습니다."
+            :"님이 나갔습니다."
+        )
+    }
     return answer
 }
