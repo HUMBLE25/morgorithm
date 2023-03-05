@@ -15,16 +15,25 @@ function solution(s) {
     // }
     // return answer
     
-    //다른 매서드 활용 indecOf,lastIndecOf매소드를 이용했다.
-    let answer = ''
-    for(let el of s){
-        //indexOf는 첫번쨰 인덱스를 찾고 lastIndexOf는 마지막 인덱스를 찾는다.
-        if(s.indexOf(el) === s.lastIndexOf(el)){
-            answer +=el
-        }
-    }
-    //문자를 사전 순서대로 정렬해야 하므로 스프레드 연산자로 배열로 만들고,
-    //sort매서드로 정렬을 시킨다. 그리고 join매서드로 모아준다.
-    return [...answer].sort().join('')
+    // //다른 매서드 활용 indecOf,lastIndecOf매소드를 이용했다.
+    // let answer = ''
+    // for(let el of s){
+    //     //indexOf는 첫번쨰 인덱스를 찾고 lastIndexOf는 마지막 인덱스를 찾는다.
+    //     if(s.indexOf(el) === s.lastIndexOf(el)){
+    //         answer +=el
+    //     }
+    // }
+    // //문자를 사전 순서대로 정렬해야 하므로 스프레드 연산자로 배열로 만들고,
+    // //sort매서드로 정렬을 시킨다. 그리고 join매서드로 모아준다.
+    // return [...answer].sort().join('')
+    
+    //filter매서드를 활용한 풀이
+    const answer = [...s].sort()
+                         .filter((el)=>{
+                            const regExp = new RegExp(el,'g')
+                            return s.match(regExp).length === 1
+                           })
+                         .join('')
+    return answer
     
 }
