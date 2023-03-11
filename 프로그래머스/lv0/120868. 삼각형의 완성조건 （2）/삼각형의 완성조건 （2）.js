@@ -7,16 +7,26 @@ function solution(sides) {
     // => Math.abs(sides[0]-sides[1]) < num , num < 둘중 최댓값;
     //둘다 작은 수인 경우 sides[0] + sides [1] > num , num >둘중 최댓값;
 
-    //둘중하나가 최댓값인 경우 시작하는 수
-    const start = Math.abs(sides[0]-sides[1])+1;
-    //입력받은 수모두 최댓값이 아닌경우 가능한 수의 최댓값
-    const end = sides[0] + sides [1];
-    //정답을 담을 answer를 선언하고 0을 할당한다.
-    let answer=0;
-    for(let num = start ;num < end ; num++){
-        answer++;
-    }
-    //answer를 반환한다.
-    return answer
+    
+    // //둘중하나가 최댓값인 경우 시작하는 수
+    // const start = Math.abs(sides[0]-sides[1])+1;
+    // //입력받은 수모두 최댓값이 아닌경우 가능한 수의 최댓값
+    // const end = sides[0] + sides [1];
+    // //정답을 담을 answer를 선언하고 0을 할당한다.
+    // let answer=0;
+    // for(let num = start ;num < end ; num++){
+    //     answer++;
+    // }
+    // //answer를 반환한다.
+    // return answer
+    
+    //위의 연산을 요약한다.
+    //0번쨰인덱스가 최댓값인 경우
+    // sides[0]-sides[1] < num <sides[0] + sides [1]
+    // 0 < num < 2sides[1]
+    // 1 <= num <= 2sides[1] -1 
+    // num의 갯수는 2sides[1]-1
+    
+    return Math.min(...sides)*2 - 1
  
 }
