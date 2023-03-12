@@ -19,8 +19,10 @@ function solution(spell, dic) {
     // // 삼항연산자를 이용하여 true일 경우 1을 false일 경우 2를 반환한다.
     // return isValid ? 1 : 2
     
+    // 적어도 하나가 참일 경우 true를 반환하는 some매서드를 사용한다.
     return dic.some((el)=>{
                 return spell.sort().join('') === [...el].sort().join('')
             }) ? 1 : 2;
+    
                     
 }
