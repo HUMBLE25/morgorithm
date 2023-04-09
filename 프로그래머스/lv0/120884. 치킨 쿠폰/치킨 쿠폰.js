@@ -5,12 +5,14 @@ function solution(chicken) {
     // chicken을 나머지 연산자로 연산하고, 나누기 연산자로 나눈 값을 더하여 쿠폰수를 담는 변수에 할당해준다.
     // 연산의 반복은 언제까지 하지? 몫이 0인 경우 그만둔다.
 
-    let service = 0;
-    let coupon = chicken;
-    while(coupon >= 10){
-        const value = Math.trunc(coupon / 10);
-        service += value;
-        coupon = value + coupon % 10;
-    }
-    return service
+    // let service = 0;
+    // let coupon = chicken;
+    // while(coupon >= 10){
+    //     const value = Math.trunc(coupon / 10);
+    //     service += value;
+    //     coupon = value + coupon % 10;
+    // }
+    // return service
+    
+    return parseInt((chicken-1) / 9);
 }
