@@ -1,0 +1,7 @@
+-- 코드를 입력하세요
+-- 갯수를 조회한다.
+-- 2021년에 가입한 회원중 에서 
+SELECT COUNT(AGE)
+FROM USER_INFO
+WHERE JOINED BETWEEN '2021-01-01' AND '2021-12-31'
+AND AGE BETWEEN 20 AND 29;
