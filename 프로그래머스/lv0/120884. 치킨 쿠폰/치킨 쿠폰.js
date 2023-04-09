@@ -7,13 +7,10 @@ function solution(chicken) {
 
     let service = 0;
     let coupon = chicken;
-    while(true){
+    while(coupon >= 10){
         const value = Math.trunc(coupon / 10);
-        if(value){
-            service += value;
+        service += value;
         coupon = value + coupon % 10;
-        }else{
-            return service
-        }
     }
+    return service
 }
