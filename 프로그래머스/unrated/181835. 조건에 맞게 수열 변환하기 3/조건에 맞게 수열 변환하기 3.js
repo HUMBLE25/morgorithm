@@ -1,14 +1,9 @@
-function solution(arr, k) {    
-    if(k % 2){
-        for(let id in arr){
-            arr[id] = arr[id] * k;
-        }
-       // return arr.map(el => el * k);
-    } else {
-         for(let id in arr){
-            arr[id] = arr[id] + k;
-        }
-        // return arr.map(el => el + k);
+function solution(arr, k) {
+    // return k % 2  
+    //         ? arr.map(el => el * k) 
+    //         : arr.map(el => el + k);
+    const handleMap = (el) => {
+        return k % 2 ? el * k : el + k;
     }
-    return arr;
+    return arr.map(handleMap)
 }
