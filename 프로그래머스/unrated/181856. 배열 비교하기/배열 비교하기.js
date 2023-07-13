@@ -6,7 +6,7 @@ function solution(arr1, arr2) {
 
            const total1 = arr1.reduce(reducer,0);
            const total2 = arr2.reduce(reducer,0);
-
+         
            if (total1 === total2){
                return 0;
            } else if(total1 > total2){
