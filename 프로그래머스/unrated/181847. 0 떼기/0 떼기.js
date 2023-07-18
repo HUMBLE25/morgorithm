@@ -7,5 +7,5 @@ function solution(n_str) {
     //         return answer;
     //     }
     // }
-    return +n_str+'';
+    return + n_str + '';
 }
