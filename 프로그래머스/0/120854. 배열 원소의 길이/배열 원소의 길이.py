@@ -4,3 +4,4 @@ def solution(strlist):
 
     result = map(lambda x: len(x), strlist)
     return list(result)
+    # return [len(str) for str in strlist]
