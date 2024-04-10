@@ -9,7 +9,6 @@ function solution(price, money, count) {
     // 금액 부족하지 않다면 0을 반환한다. 
     // 삼항 연산자를 이용하면 될 것이다.
     const total = (price + price * count)/2*count
-    return total - money > 0 
-                ? total - money
-                : 0
+    const margin = total - money
+    return margin > 0 ? margin : 0
 }
