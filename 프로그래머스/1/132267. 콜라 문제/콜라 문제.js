@@ -2,8 +2,7 @@ function solution(a, b, n) {
     // 2개를 가져다 주면 1개를 주는 마트일 경우
     // 빈병을 짝수갯수씩 가져다 준다.
     // 일반화 시켜본다.
-    // 받을 수 있는 콜라의 별수를 반환한다.
-    console.log(a,"개를 주면",b,"개를 준다.",n,"개의 빈병이 있다.","몇개를 받을 수 있을까?")
+    
     // 사칙연산의 규칙을 파악하는 것 같다.
     // 연산과정을 생각하면 몫과 나머지의 관계를 구하면 될것 같다.
     // a : 3, b : 2, n : 20인 경우
@@ -18,18 +17,21 @@ function solution(a, b, n) {
     // n을 a로 나눴을때 몫에 b를 곱하여 배열에 담고,나머지는 다음 연산에서 배열의 원소에 더하여 다시 연산을 한다.
     // 반복문을 통해 연산을 반복해야 한다. 
     // 연산 마지막에 나눠지는 수를 재할당한다.
+    // 일반화
+    // 1. 나눠지는 수 : n, 나누는 수: a, 몫 : |n/a|, 나머지 : n%a, 받은 콜라수[|n/a|*b]
+    // 2. 나눠지는 수 : |n/a|*b + n%a, 나누는 수: a, 몫 : |(|n/a|*b + n%a)/a|, 나머지 : (|n/a|*b + n%a)%a, 받은 콜라수[|n/a|*b]
+    // ... 나눠지는 수가 a보다 작을때 까지 반복한다.
+    
+    // 반복문 사용 O
     const get=[]
-    let val = 0
-    let answer = 0
+    let value = 0
     while(n>=a){
-        // 몫을 넣는다.
-        val = parseInt(n/a)*b
-        get[get.length] = parseInt(n/a)*b
-        n= val + n%a
+        value = parseInt(n/a)*b
+        get[get.length] = value
+        n= value + n%a
     }
-    get.forEach((el) => {
-        answer += el
-    })
-    return answer
+    return get.reduce((acc,cur)=> acc+cur,0)
+    
+    // 반복문 사용 X
     
 }
