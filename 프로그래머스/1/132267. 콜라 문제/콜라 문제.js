@@ -22,7 +22,6 @@ function solution(a, b, n) {
     // 2. 나눠지는 수 : |n/a|*b + n%a, 나누는 수: a, 몫 : |(|n/a|*b + n%a)/a|, 나머지 : (|n/a|*b + n%a)%a, 받은 콜라수[|n/a|*b]
     // ... 나눠지는 수가 a보다 작을때 까지 반복한다.
     
-    // 반복문 사용 O
     const get=[]
     let value = 0
     while(n>=a){
@@ -31,7 +30,4 @@ function solution(a, b, n) {
         n= value + n%a
     }
     return get.reduce((acc,cur)=> acc+cur,0)
-    
-    // 반복문 사용 X
-    
 }
